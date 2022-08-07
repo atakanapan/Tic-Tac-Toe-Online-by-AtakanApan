@@ -9,12 +9,28 @@ import SwiftUI
 
 final class GameViewModel: ObservableObject {
     
+    @AppStorage("user") private var userData: Data?
+    
     let columns: [GridItem] = [GridItem(.flexible()),
                                GridItem(.flexible()),
                                GridItem(.flexible())]
+    
     @Published var game = Game(id: UUID().uuidString, playerOneId: "player1", playerTwoId: "player2", blockMoveForPlayerId: "player2", winnerPlayerId: "", rematchPlayerId: [], moves: Array(repeating: nil, count: 9))
     
+    @Published var currentUser: User!
+    
     private let winPatterns: Set<Set<Int>> = [[0,1,2], [3,4,5] , [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
+    
+    //MARK: Init
+    
+    init() {
+        retriveUser()
+        if currentUser == nil {
+            saveUser()
+        }
+        print("We have a user with ID: ", currentUser.id)
+    }
+    
     
     //MARK: Functions
     
@@ -51,6 +67,25 @@ final class GameViewModel: ObservableObject {
     
     func checkForDraw(in moves: [Move?]) -> Bool {
         return moves.compactMap{ $0 }.count == 9
+    }
+    
+    //MARK: User Object
+    
+    func saveUser(){
+        currentUser = User()
+        do{
+            print("encoding user")
+            let data = try JSONEncoder().encode(currentUser)
+            userData = data
+        } catch { print("User cant saved") }
+    }
+    
+    func retriveUser(){
+        guard let userData = userData else { return }
+        do {
+            print("decoding user")
+            currentUser = try JSONDecoder().decode(User.self, from: userData)
+        } catch { print("No user saved") }
     }
 }
 
