@@ -16,7 +16,7 @@ struct GameView: View {
         
         GeometryReader { geometry in
             VStack{
-                Text("Waiting for the player")
+                Text(viewModel.gameNotification)
                 
                 Button{
                     mode.wrappedValue.dismiss()

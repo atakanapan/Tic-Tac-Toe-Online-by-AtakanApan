@@ -27,6 +27,7 @@
 		A48F6E1228A0320800C85408 /* FirebaseReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F6E1128A0320800C85408 /* FirebaseReference.swift */; };
 		A48F6E1528A0333700C85408 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F6E1428A0333700C85408 /* FirebaseService.swift */; };
 		A48F6E1728A302A900C85408 /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F6E1628A302A900C85408 /* AlertItem.swift */; };
+		A48F6E1928A30BE200C85408 /* GameNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F6E1828A30BE200C85408 /* GameNotifications.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		A48F6E1128A0320800C85408 /* FirebaseReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseReference.swift; sourceTree = "<group>"; };
 		A48F6E1428A0333700C85408 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		A48F6E1628A302A900C85408 /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
+		A48F6E1828A30BE200C85408 /* GameNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNotifications.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				A48F6E0328A00FE000C85408 /* Model.swift */,
 				A48F6E0628A0264E00C85408 /* User.swift */,
 				A48F6E1628A302A900C85408 /* AlertItem.swift */,
+				A48F6E1828A30BE200C85408 /* GameNotifications.swift */,
 			);
 			path = ModelFolder;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A48F6E1928A30BE200C85408 /* GameNotifications.swift in Sources */,
 				A48F6E0228A00CF600C85408 /* GameViewModel.swift in Sources */,
 				A44C17F8289FFFFF0076EBBE /* HomeView.swift in Sources */,
 				A48F6DFC28A00AA200C85408 /* PlayerIndicatorView.swift in Sources */,
