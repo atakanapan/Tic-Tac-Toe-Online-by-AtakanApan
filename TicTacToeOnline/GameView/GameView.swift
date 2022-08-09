@@ -20,6 +20,7 @@ struct GameView: View {
                 
                 Button{
                     mode.wrappedValue.dismiss()
+                    viewModel.quiteGame()
                 } label:{
                     GameButton(title: "Quit", backgroundColor: Color(.systemRed))
                 }
@@ -33,7 +34,7 @@ struct GameView: View {
                         ForEach(0..<9) { i in
                             ZStack{
                                 GameSquareView(proxy: geometry)
-                                PlayerIndicatorView(systemImageName: viewModel.game.moves[i]?.indicator ?? "applelogo")
+                                PlayerIndicatorView(systemImageName: viewModel.game?.moves[i]?.indicator ?? "applelogo")
                             }
                             .onTapGesture {
                                 viewModel.processPlayerMove(for: i)
@@ -42,6 +43,8 @@ struct GameView: View {
                     }
                 }
             }
+        }.onAppear {
+            viewModel.getTheGame()
         }
         
         

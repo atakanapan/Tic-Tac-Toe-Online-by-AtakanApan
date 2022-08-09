@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 final class GameViewModel: ObservableObject {
     
@@ -15,9 +16,10 @@ final class GameViewModel: ObservableObject {
                                GridItem(.flexible()),
                                GridItem(.flexible())]
     
-    @Published var game = Game(id: UUID().uuidString, playerOneId: "player1", playerTwoId: "player2", blockMoveForPlayerId: "player2", winnerPlayerId: "", rematchPlayerId: [], moves: Array(repeating: nil, count: 9))
-    
+    @Published var game: Game?
     @Published var currentUser: User!
+    
+    private var cancellables: Set<AnyCancellable> = []
     
     private let winPatterns: Set<Set<Int>> = [[0,1,2], [3,4,5] , [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
     
@@ -34,21 +36,29 @@ final class GameViewModel: ObservableObject {
     
     //MARK: Functions
     
+    func getTheGame(){
+        FirebaseService.shared.startGame(with: currentUser.id)
+        FirebaseService.shared.$game
+            .assign(to: \.game, on: self)
+            .store(in: &cancellables)
+    }
+    
     func processPlayerMove(for position: Int){
         
-        if isSquareOccupied(in: game.moves, forIndex: position) { return }
-        game.moves[position] = Move(isPlayerOne: true, boardIndex: position)
+        guard game != nil else { return }
         
+        if isSquareOccupied(in: game!.moves, forIndex: position) { return }
+        game!.moves[position] = Move(isPlayerOne: true, boardIndex: position)
         //block the move
+        game!.blockMoveForPlayerId = currentUser.id
         
         //check for win
-        if checkForWinCondition(for: true, in: game.moves){
+        if checkForWinCondition(for: true, in: game!.moves){
             print("You have won!")
             return
         }
-        
         //check for draw
-        if checkForDraw(in: game.moves){
+        if checkForDraw(in: game!.moves){
             print("Draw")
             return
         }
@@ -67,6 +77,10 @@ final class GameViewModel: ObservableObject {
     
     func checkForDraw(in moves: [Move?]) -> Bool {
         return moves.compactMap{ $0 }.count == 9
+    }
+    
+    func quiteGame() {
+        FirebaseService.shared.quiteTheGame()
     }
     
     //MARK: User Object

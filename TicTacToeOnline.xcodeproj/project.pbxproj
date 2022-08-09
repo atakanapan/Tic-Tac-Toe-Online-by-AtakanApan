@@ -20,6 +20,12 @@
 		A48F6E0228A00CF600C85408 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F6E0128A00CF600C85408 /* GameViewModel.swift */; };
 		A48F6E0428A00FE000C85408 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F6E0328A00FE000C85408 /* Model.swift */; };
 		A48F6E0728A0264E00C85408 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F6E0628A0264E00C85408 /* User.swift */; };
+		A48F6E0A28A02E3F00C85408 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A48F6E0928A02E3F00C85408 /* FirebaseFirestore */; };
+		A48F6E0C28A02E3F00C85408 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = A48F6E0B28A02E3F00C85408 /* FirebaseFirestoreCombine-Community */; };
+		A48F6E0E28A02E3F00C85408 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A48F6E0D28A02E3F00C85408 /* FirebaseFirestoreSwift */; };
+		A48F6E1028A02F8300C85408 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A48F6E0F28A02F8300C85408 /* GoogleService-Info.plist */; };
+		A48F6E1228A0320800C85408 /* FirebaseReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F6E1128A0320800C85408 /* FirebaseReference.swift */; };
+		A48F6E1528A0333700C85408 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F6E1428A0333700C85408 /* FirebaseService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +43,9 @@
 		A48F6E0128A00CF600C85408 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		A48F6E0328A00FE000C85408 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A48F6E0628A0264E00C85408 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A48F6E0F28A02F8300C85408 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A48F6E1128A0320800C85408 /* FirebaseReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseReference.swift; sourceTree = "<group>"; };
+		A48F6E1428A0333700C85408 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +53,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A48F6E0A28A02E3F00C85408 /* FirebaseFirestore in Frameworks */,
+				A48F6E0C28A02E3F00C85408 /* FirebaseFirestoreCombine-Community in Frameworks */,
+				A48F6E0E28A02E3F00C85408 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				A44C17F5289FFFFF0076EBBE /* TicTacToeOnlineApp.swift */,
+				A48F6E1328A0321100C85408 /* FirebaseHelpers */,
+				A48F6E0F28A02F8300C85408 /* GoogleService-Info.plist */,
 				A48F6E0528A00FE800C85408 /* ModelFolder */,
 				A48F6DF828A0057C00C85408 /* HomeView */,
 				A48F6DFD28A00AC200C85408 /* GameView */,
@@ -126,6 +140,15 @@
 			path = ModelFolder;
 			sourceTree = "<group>";
 		};
+		A48F6E1328A0321100C85408 /* FirebaseHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				A48F6E1128A0320800C85408 /* FirebaseReference.swift */,
+				A48F6E1428A0333700C85408 /* FirebaseService.swift */,
+			);
+			path = FirebaseHelpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -142,6 +165,11 @@
 			dependencies = (
 			);
 			name = TicTacToeOnline;
+			packageProductDependencies = (
+				A48F6E0928A02E3F00C85408 /* FirebaseFirestore */,
+				A48F6E0B28A02E3F00C85408 /* FirebaseFirestoreCombine-Community */,
+				A48F6E0D28A02E3F00C85408 /* FirebaseFirestoreSwift */,
+			);
 			productName = TicTacToeOnline;
 			productReference = A44C17F2289FFFFF0076EBBE /* TicTacToeOnline.app */;
 			productType = "com.apple.product-type.application";
@@ -170,6 +198,9 @@
 				Base,
 			);
 			mainGroup = A44C17E9289FFFFF0076EBBE;
+			packageReferences = (
+				A48F6E0828A02E3F00C85408 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = A44C17F3289FFFFF0076EBBE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -186,6 +217,7 @@
 			files = (
 				A44C17FD28A000020076EBBE /* Preview Assets.xcassets in Resources */,
 				A44C17FA28A000020076EBBE /* Assets.xcassets in Resources */,
+				A48F6E1028A02F8300C85408 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,9 +235,11 @@
 				A48F6DF328A002E300C85408 /* GameView.swift in Sources */,
 				A48F6E0428A00FE000C85408 /* Model.swift in Sources */,
 				A48F6DFA28A00A1D00C85408 /* GameSquareView.swift in Sources */,
+				A48F6E1528A0333700C85408 /* FirebaseService.swift in Sources */,
 				A48F6E0028A00C2E00C85408 /* LoadingView.swift in Sources */,
 				A48F6DF728A004A400C85408 /* HomeViewModel.swift in Sources */,
 				A44C17F6289FFFFF0076EBBE /* TicTacToeOnlineApp.swift in Sources */,
+				A48F6E1228A0320800C85408 /* FirebaseReference.swift in Sources */,
 				A48F6E0728A0264E00C85408 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +441,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A48F6E0828A02E3F00C85408 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A48F6E0928A02E3F00C85408 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A48F6E0828A02E3F00C85408 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		A48F6E0B28A02E3F00C85408 /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A48F6E0828A02E3F00C85408 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+		A48F6E0D28A02E3F00C85408 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A48F6E0828A02E3F00C85408 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A44C17EA289FFFFF0076EBBE /* Project object */;
 }
