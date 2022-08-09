@@ -26,6 +26,7 @@
 		A48F6E1028A02F8300C85408 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A48F6E0F28A02F8300C85408 /* GoogleService-Info.plist */; };
 		A48F6E1228A0320800C85408 /* FirebaseReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F6E1128A0320800C85408 /* FirebaseReference.swift */; };
 		A48F6E1528A0333700C85408 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F6E1428A0333700C85408 /* FirebaseService.swift */; };
+		A48F6E1728A302A900C85408 /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F6E1628A302A900C85408 /* AlertItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		A48F6E0F28A02F8300C85408 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A48F6E1128A0320800C85408 /* FirebaseReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseReference.swift; sourceTree = "<group>"; };
 		A48F6E1428A0333700C85408 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		A48F6E1628A302A900C85408 /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			children = (
 				A48F6E0328A00FE000C85408 /* Model.swift */,
 				A48F6E0628A0264E00C85408 /* User.swift */,
+				A48F6E1628A302A900C85408 /* AlertItem.swift */,
 			);
 			path = ModelFolder;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				A48F6DF328A002E300C85408 /* GameView.swift in Sources */,
 				A48F6E0428A00FE000C85408 /* Model.swift in Sources */,
 				A48F6DFA28A00A1D00C85408 /* GameSquareView.swift in Sources */,
+				A48F6E1728A302A900C85408 /* AlertItem.swift in Sources */,
 				A48F6E1528A0333700C85408 /* FirebaseService.swift in Sources */,
 				A48F6E0028A00C2E00C85408 /* LoadingView.swift in Sources */,
 				A48F6DF728A004A400C85408 /* HomeViewModel.swift in Sources */,

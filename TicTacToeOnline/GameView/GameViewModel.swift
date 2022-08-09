@@ -16,8 +16,14 @@ final class GameViewModel: ObservableObject {
                                GridItem(.flexible()),
                                GridItem(.flexible())]
     
-    @Published var game: Game?
+    @Published var game: Game? {
+        didSet {
+            //check the game status
+            checkIfGameIsOver()
+        }
+    }
     @Published var currentUser: User!
+    @Published var alertItem: AletItem?
     
     private var cancellables: Set<AnyCancellable> = []
     
@@ -48,20 +54,26 @@ final class GameViewModel: ObservableObject {
         guard game != nil else { return }
         
         if isSquareOccupied(in: game!.moves, forIndex: position) { return }
-        game!.moves[position] = Move(isPlayerOne: true, boardIndex: position)
+        game!.moves[position] = Move(isPlayerOne: isPlayerOnePlaying(), boardIndex: position)
         //block the move
         game!.blockMoveForPlayerId = currentUser.id
+        FirebaseService.shared.updateGame(game!)
         
         //check for win
-        if checkForWinCondition(for: true, in: game!.moves){
+        if checkForWinCondition(for: isPlayerOnePlaying(), in: game!.moves){
             print("You have won!")
+            game!.winnerPlayerId = currentUser.id
+            FirebaseService.shared.updateGame(game!)
             return
         }
         //check for draw
         if checkForDraw(in: game!.moves){
             print("Draw")
+            game!.winnerPlayerId = "0"
+            FirebaseService.shared.updateGame(game!)
             return
         }
+        
     }
     
     func isSquareOccupied(in moves: [Move?], forIndex index: Int) -> Bool {
@@ -81,6 +93,40 @@ final class GameViewModel: ObservableObject {
     
     func quiteGame() {
         FirebaseService.shared.quiteTheGame()
+    }
+    
+    func checkForGameStatus() -> Bool {
+        //check for game!.blockMoveForPlayerId == currentUser.id otherwise (by using :) false
+        return game != nil ? game!.blockMoveForPlayerId == currentUser.id : false
+    }
+    
+    func isPlayerOnePlaying() -> Bool {
+        return game != nil ? game!.playerOneId == currentUser.id : false
+    }
+    
+    func checkIfGameIsOver() {
+        alertItem = nil
+        
+        guard game != nil else { return }
+        if game!.winnerPlayerId == "0" {
+            //for draw
+            alertItem = AlertContext.draw
+        }
+        else if game!.winnerPlayerId != "" {
+            if game!.winnerPlayerId == currentUser.id {
+                //for won
+                alertItem = AlertContext.youWin
+            }
+            else {
+                //for lost
+                alertItem = AlertContext.youLost
+                
+            }
+        }
+    }
+    
+    func resetGame() {
+        
     }
     
     //MARK: User Object
