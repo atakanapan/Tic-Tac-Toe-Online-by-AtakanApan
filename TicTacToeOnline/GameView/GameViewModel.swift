@@ -126,7 +126,23 @@ final class GameViewModel: ObservableObject {
     }
     
     func resetGame() {
-        
+        //control for oppenent quit
+        guard game != nil else {
+            alertItem = AlertContext.opponentQuit
+            return
+        }
+        // is both players wants rematch control
+        if game!.rematchPlayerId.count == 1 {
+            //start new game part
+            game!.moves = Array(repeating: nil, count: 9)
+            game!.winnerPlayerId = ""
+            game!.blockMoveForPlayerId = game!.playerTwoId
+        }
+        else if game!.rematchPlayerId.count == 2 {
+            game!.rematchPlayerId = []
+        }
+        game!.rematchPlayerId.append(currentUser.id)
+        FirebaseService.shared.updateGame(game!)
     }
     
     //MARK: User Object
